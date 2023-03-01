@@ -51,8 +51,8 @@ jobs:
           context: .
           # Note: tags has to be all lower-case
           tags: |
-            ${{ github.repository }}:latest
-            ${{ github.repository }}:${{ env.SHORT_SHA }}"
+            hwestman/hook-proxy:latest
+            hwestman/hook-proxy:${{ env.SHORT_SHA }}
           
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/main' }}
