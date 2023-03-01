@@ -23,8 +23,8 @@ jobs:
     steps:
       - name: Add SHORT_SHA env property with commit short sha
         run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
-      # - name: Checkout code
-      #   uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       # setup Docker buld action
       - name: Set up Docker Buildx
@@ -49,7 +49,6 @@ jobs:
         with:
           # relative path to the place where source code with Dockerfile is located
           context: .
-          file: ./Dockerfile
           # Note: tags has to be all lower-case
           tags: |
             hwestman/hook-proxy:latest
