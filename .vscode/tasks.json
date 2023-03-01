@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/hook-proxy.csproj",
+                "${workspaceFolder}/src/hook-proxy.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/hook-proxy.csproj",
+                "${workspaceFolder}/src/hook-proxy.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,10 +33,9 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/hook-proxy.csproj"
+                "${workspaceFolder}/src/hook-proxy.csproj"
             ],
-            "problemMatcher": "$msCompile",
-            // "options": { "cwd": "${workspaceFolder}" }
+            "problemMatcher": "$msCompile"
         }
     ]
 }

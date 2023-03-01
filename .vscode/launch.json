@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // "program": "dotnet",
-            "program": "${workspaceFolder}/bin/Debug/net7.0/hook-proxy.dll",
+            "program": "${workspaceFolder}/src/bin/Debug/net7.0/hook-proxy.dll",
             "args": [
                 // "watch",
                 // "--project",
@@ -31,7 +31,7 @@
                 "ASPNETCORE_ENVIRONMENT": "Development"
             },
             "sourceFileMap": {
-                "/Views": "${workspaceFolder}/Views"
+                "/Views": "${workspaceFolder}/src/Views"
             }
         },
         {
