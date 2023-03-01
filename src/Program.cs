@@ -10,11 +10,8 @@ builder.Services.AddScoped<HAService>();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.MapPost("/{hook}", async (string hook, JsonDocument content, [FromServices] HAService hAService) => {
     var parsedDevice = JsonSerializer.Deserialize<Device>(content);
