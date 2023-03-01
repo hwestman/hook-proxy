@@ -54,7 +54,7 @@ jobs:
           # Note: tags has to be all lower-case
           tags: |
             "ghcr.io/hook-proxy:latest"
-          # "ghcr.io/${{ github.repository }}:${{ env.SHORT_SHA }}"
+            "ghcr.io/${{ github.repository }}:${{ env.SHORT_SHA }}"
           
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/main' }}
