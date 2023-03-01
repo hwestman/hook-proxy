@@ -47,13 +47,13 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Build image and push to GitHub Container Registry
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v4
         with:
           # relative path to the place where source code with Dockerfile is located
           context: .
           # Note: tags has to be all lower-case
           tags: |
-            "ghcr.io/${{ github.repository }}:latest"
+            "ghcr.io/hook-proxy:latest"
           # "ghcr.io/${{ github.repository }}:${{ env.SHORT_SHA }}"
           
           # build on feature branches, push only on main branch
