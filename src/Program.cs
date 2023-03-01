@@ -13,10 +13,8 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.MapPost("/{hook}", async (string hook, JsonDocument content, [FromServices] HAService hAService) => {
-    var parsedDevice = JsonSerializer.Deserialize<Device>(content);
-    var entities = DeviceMapper.MapDeviceToEntity(parsedDevice);
-    await hAService.PostToHA(entities);
+app.MapPost("/{hook}", async (string hook, Device device, [FromServices] HAService hAService) => {
+    await hAService.PostToHA(device);
 })
 .WithOpenApi();
 

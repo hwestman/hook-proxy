@@ -1,4 +1,4 @@
 public interface IHAService
 {
-    public Task PostToHA(List<Entity> entities);
+    public Task PostToHA(Device device);
 }
