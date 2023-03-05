@@ -1,6 +1,7 @@
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 public class HAService : IHAService {
     
@@ -17,7 +18,7 @@ public class HAService : IHAService {
         }
         await PostEntity("Temperature", device.EntityName, device.Temperature?.Celsius,"temperature", "C");
         await PostEntity("SignalStrength", device.EntityName, device.Cellular?.SignalStrength,"enum");
-        await PostEntity("DBM", device.EntityName, device.Cellular?.Dbm,"signal_strength","DBM");
+        await PostEntity("DBM", device.EntityName, device.Cellular?.Dbm,"signal_strength","dBm");
         await PostEntity("Humidity", device.EntityName, device.Humidity?.Percentage, "humidity","%");
         await PostEntity("Light", device.EntityName, device.Light?.Lux,"illuminance", "lx");
         await PostEntity("Battery", device.EntityName,  device.Battery?.Percentage,"battery","%");
@@ -35,6 +36,9 @@ public class HAService : IHAService {
                         device_class = deviceClass,
                         unit_of_measurement = unitOfMeasurement
                     }
+                },new JsonSerializerOptions()
+                {
+                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
                 }),
                 Encoding.UTF8,
                 "application/json");
