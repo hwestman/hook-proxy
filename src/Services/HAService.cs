@@ -40,6 +40,6 @@ public class HAService : IHAService {
                 "application/json");
 
         _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _config["HAToken"]);
-        var result = await _client.PostAsync($"{_config["HABaseURL"]}/api/states/sensor.{entityId}_{name}", jsonContent);
+        var result = await _client.PostAsync($"{_config["HABaseURL"]}/api/states/sensor.solo_{entityId}_{name}", jsonContent);
     }
 }
