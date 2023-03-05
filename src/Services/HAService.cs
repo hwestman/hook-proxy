@@ -15,24 +15,25 @@ public class HAService : IHAService {
         if (device == null) {
             return;
         }
-        await PostEntity("Temperature", device.EntityName, device.Temperature?.Celsius,"temperature");
+        await PostEntity("Temperature", device.EntityName, device.Temperature?.Celsius,"temperature", "C");
         await PostEntity("SignalStrength", device.EntityName, device.Cellular?.SignalStrength,"enum");
-        await PostEntity("DBM", device.EntityName, device.Cellular?.Dbm,"signal_strength");
-        await PostEntity("Humidity", device.EntityName, device.Humidity?.Percentage, "humidity");
-        await PostEntity("Light", device.EntityName, device.Light?.Lux,"illuminance");
-        await PostEntity("Battery", device.EntityName,  device.Battery?.Percentage,"battery");
+        await PostEntity("DBM", device.EntityName, device.Cellular?.Dbm,"signal_strength","DBM");
+        await PostEntity("Humidity", device.EntityName, device.Humidity?.Percentage, "humidity","%");
+        await PostEntity("Light", device.EntityName, device.Light?.Lux,"illuminance", "lx");
+        await PostEntity("Battery", device.EntityName,  device.Battery?.Percentage,"battery","%");
         await PostEntity("Location", device.EntityName, $"{device.Location?.Latitude},{device.Location?.Longitude}","enum");
         await PostEntity("Address", device.EntityName, device.Location?.FormattedAddress,"enum");
     }
 
-    private async Task PostEntity(string name, string entityId, object value, string deviceClass) {
+    private async Task PostEntity(string name, string entityId, object value, string deviceClass, string? unitOfMeasurement = null) {
 
         using StringContent jsonContent = new(
                 JsonSerializer.Serialize(new
                 {
                     state = value,
                     attributes = new {
-                        device_class = deviceClass
+                        device_class = deviceClass,
+                        unit_of_measurement = unitOfMeasurement
                     }
                 }),
                 Encoding.UTF8,
