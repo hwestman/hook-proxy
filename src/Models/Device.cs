@@ -3,8 +3,20 @@ public class Cellular {
     public double? Dbm { get;  set; }
 }
 
-public class Temperature { 
-    public double? Celsius { get;  set; }
+public class Temperature {
+
+    private double? _celsius;
+    public double? Celsius { 
+        get {
+            return _celsius;
+        }
+        set {
+            if (value == null) {
+                return;
+            }
+            _celsius = Math.Round((double)value, 1);
+        }
+    }
     public double? Fahrenheit { get;  set; }
 }
 
@@ -12,8 +24,19 @@ public class Pressure {
     public double? Psi { get;  set; }
     public double? Atmospheric { get;  set; }
 }
-public class Humidity { 
-    public double? Percentage { get;  set; }
+public class Humidity {
+    private double? _percentage;
+    public double? Percentage { 
+        get {
+            return _percentage;
+        }
+        set {
+            if (value == null) {
+                return;
+            }
+            _percentage = Math.Round((double)value, 0);
+        }
+    }
 }
 
 public class Accelerometer { 
@@ -22,11 +45,33 @@ public class Accelerometer {
     public double? Y { get;  set; }
     public double? Z { get;  set; }
 }
-public class Light { 
-    public double? Lux  { get;  set; }
+public class Light {
+    public double? _lux;
+    public double? Lux { 
+        get {
+            return _lux;
+        }
+        set {
+            if (value == null) {
+                return;
+            }
+            _lux = Math.Round((double)value, 0);
+        }
+    }
 }
-public class Battery { 
-    public double? Percentage  { get;  set; }
+public class Battery {
+    public double? _percentage;
+    public double? Percentage { 
+        get {
+            return _percentage;
+        }
+        set {
+            if (value == null) {
+                return;
+            }
+            _percentage = Math.Round((double)value, 0);
+        }
+    }
     public bool? IsCharging  { get;  set; }
 }
 public class Accuracy
