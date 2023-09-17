@@ -19,9 +19,9 @@ public class HAService : IHAService {
         await PostEntity("Temperature", device.EntityName, device.Temperature?.Celsius,"temperature","sensor", "C","measurement");
         await PostEntity("SignalStrength", device.EntityName, device.Cellular?.SignalStrength,"enum","sensor");
         await PostEntity("DBM", device.EntityName, device.Cellular?.Dbm,"signal_strength","sensor","dBm","measurement");
-        await PostEntity("Humidity", device.EntityName, device.Humidity?.Percentage, "humidity","%","sensor","measurement");
-        await PostEntity("Light", device.EntityName, device.Light?.Lux,"illuminance", "lx","sensor","measurement");
-        await PostEntity("Battery", device.EntityName,  device.Battery?.Percentage,"battery","%","sensor","measurement");
+        await PostEntity("Humidity", device.EntityName, device.Humidity?.Percentage, "sensor","humidity","%","measurement");
+        await PostEntity("Light", device.EntityName, device.Light?.Lux,"illuminance", "sensor","lx","measurement");
+        await PostEntity("Battery", device.EntityName,  device.Battery?.Percentage,"battery","sensor","%","measurement");
         await PostEntity("Location", device.EntityName, $"{device.Location?.Latitude},{device.Location?.Longitude}","enum","device_tracker");
         await PostEntity("Address", device.EntityName, device.Location?.FormattedAddress,"enum","sensor");
     }
