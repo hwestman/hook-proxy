@@ -1,4 +1,3 @@
-using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +13,7 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.MapPost("/{hook}", async (string hook, Device device, [FromServices] HAService hAService) => {
-    await hAService.PostToHA(device);
+    await hAService.PostToHA(device.ToEntities());
 })
 .WithOpenApi();
 
