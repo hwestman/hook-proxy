@@ -37,8 +37,8 @@ public class HAService : IHAService {
                 }),
                 Encoding.UTF8,
                 "application/json");
-        var res = await jsonContent.ReadAsStringAsync();
-        Console.WriteLine($"Posting string: {res}");
+        // var res = await jsonContent.ReadAsStringAsync();
+        // Console.WriteLine($"Posting string: {res}");
 
         _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _config["HAToken"]);
         await _client.PostAsync($"{_config["HABaseURL"]}/api/states/{entity.DeviceType}.solo_{entity.EntityId}_{entity.Name}", jsonContent);
